@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="header.css">
+    <title>The Oder</title>
+    <style>
+        .mainpro {
+            background-color: transparent;
+            position: relative;
+            width: 80%;
+            height: auto;
+            display: flex;
+            left: 50%;
+            transform: translate(-50%, 0);
+            margin: 100px 0;
+            gap: 30px;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgba(255, 178, 85);
+        }
+
+        .proleft {
+            position: relative;
+            width: 70%;
+            height: auto;
+
+        }
+
+        .proleft h4 {
+            position: relative;
+            align-content: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 28px;
+            left: 30px;
+            top: 10px;
+        }
+
+        .spp {
+            position: relative;
+            display: flex;
+            padding: 20px 0;
+
+        }
+
+        .spp img {
+            width: 160px;
+            height: 160px;
+            background-color: antiquewhite;
+        }
+
+
+        .infsp {
+            width: 100%;
+            padding-left: 20px;
+        }
+
+        .infpro {
+            width: 80%;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .nsp {
+            position: relative;
+            display: flex;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+            font-weight: 600;
+            justify-content: space-between;
+        }
+
+
+        .quan {
+            position: relative;
+            display: flex;
+            color: rgb(90, 85, 78);
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .tity {
+            position: relative;
+            width: 68%;
+        }
+
+        .tity input {
+            text-transform: translate(-50%, -50%);
+            position: relative;
+            color: rgb(255, 178, 85);
+            font-style: 16px;
+            left: 10px;
+            background: transparent;
+            padding-left: 12px;
+            width: 38px;
+            height: 26px;
+            border: solid 2.5px rgba(255, 178, 85);
+            border-radius: 5px;
+            transition: all 0.5s;
+        }
+
+        .edit {
+            position: relative;
+            display: flex;
+            width: 10%;
+            gap: 20px;
+        }
+
+        .fav,
+        .trash {
+            position: relative;
+            display: flex;
+        }
+
+        .fav label svg,
+        .trash label svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        .fav label:hover {
+            color: #ff5252;
+        }
+
+        .trash label:hover {
+            color: rgb(255, 178, 85);
+        }
+
+        .fav input[type="checkbox"]:checked+label {
+            color: #ff5252;
+            transition: all 0.2s;
+            opacity: .9;
+        }
+
+        .fav input[type="checkbox"],
+        .trash input[type="checkbox"] {
+            display: absolute;
+            position: absolute;
+            opacity: 0;
+        }
+
+        .proright {
+            position: relative;
+            width: 30%;
+        }
+
+        .proright h3 {
+            position: relative;
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            top: 10px;
+            margin-bottom: 30px;
+        }
+
+        .sub{
+            position: relative;
+            display: flex;
+            width: 100%;
+            font-size: 18px;
+            font-family: 'Times New Roman', Times, serif;
+            justify-content: space-between;
+        }
+
+        .total {
+            position: relative;
+            display: flex;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Times New Roman', Times, serif;
+            justify-content: space-between;
+        }
+
+        .pric {
+            position: relative;
+            font: inherit;
+        }
+
+        .payment {
+            position: relative;
+            display:  flex;
+            justify-content: end;
+            width: 100%;
+            height: 25px;
+            text-align: center;
+        }
+
+        .pay1{
+            width: 150px;
+            height: 25px;
+            border-radius: 25px;
+            background-color: rgb(255, 178, 85);
+            color: #fff;
+        }
+
+        .pay2{
+            width: 150px;
+            height: 25px;
+            border-radius: 25px;
+            background-color: #5a5a5a;
+            color: #fff;
+        }
+
+        .proright button {
+            background: transparent;
+            color: rgb(255, 178, 85);
+            font-weight: 400;
+            font-size: 16px;
+            text-transform: uppercase;
+            padding: 10px 26px;
+            border: 3px solid rgb(255, 178, 85);
+            border-radius: 15px;
+            transform: translate(0);
+            overflow: hidden;
+            cursor: pointer;
+            width: 90%;
+            height: 52px;
+            left: 5%;
+            position: relative;
+        }
+
+        .proright button:hover {
+            background: rgb(255, 178, 85);
+            color: #fff;
+            border-radius: 30px;
+            transition: .2s;
+        }
+
+
+        .tal1 {
+            background-color: rgb(74, 74, 74);
+            border-radius: 15px;
+            width: 120px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .tal2 {
+            background-color: rgb(255, 178, 85);
+            border-radius: 15px;
+            width: 120px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .tal3 {
+            background-color: rgb(255, 85, 85);
+            border-radius: 15px;
+            width: 120px;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- #include file="layouts/header.asp" -->
+    <form action="paying.html" id="pay">
+        <div class="mainpro">
+            <div class="proleft">
+                <h4> The Oder </h4>
+                <div class="spp">
+                    <img src="https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-packshot-thumb-01-en-12jan21.jpg?$1200px$"
+                        alt="product">
+                    <div class="infsp">
+                        <div class="nsp">
+                            <div class="n">Hogwarts Legacy</div>
+                            <div class="pp">45.95 $</div>
+                        </div>
+                        <div class="infpro">Hogwarts Legacy is an immersive, open-world action RPG set in the world
+                            first
+                            introduced in the Harry Potter books.
+
+                            Embark on a journey through familiar and new locations as you explore and discover magical
+                            beasts, customise your character and craft potions, master spell casting, upgrade talents
+                            and
+                            become the wizard you want to be.
+
+                            Experience Hogwarts in the 1800s. Your character is a student who holds the key to an
+                            ancient
+                            secret that threatens to tear the wizarding world apart. Discover the feeling of living at
+                            Hogwarts as you make allies, battle Dark Wizards and ultimately decide the fate of the
+                            wizarding
+                            world.
+
+                            Your legacy is what you make of it. Live the Unwritten.
+                        </div>
+                        <div class="quan">
+                            One quality
+                            <div class="tity">
+                                Quantity
+                                <input list="Quantity" value="1">
+                                <datalist id="Quantity">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </datalist>
+                            </div>
+                            <div class="edit">
+                                <div class="fav">
+                                    <input type="checkbox" id="love">
+                                    <label for="love">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                        </svg>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="spp">
+                    <img src="https://gmedia.playstation.com/is/image/SIEPDC/dead-island-cover-01-en-22nov22?$2400px$"
+                        alt="product">
+                    <div class="infsp">
+                        <div class="nsp">
+                            <div class="n">Dead Island 2</div>
+                            <div class="pp">65.45 $</div>
+                        </div>
+                        <div class="infpro">
+                            Dead Island is back, and with it comes a host of enhancements to its winning combination of
+                            creative first-person zombie slaying, pitch-black humour and open-world exploration.
+
+                            Welcome to HELL-A. The City of Angels has been transformed into a hellish sprawl, its
+                            populace
+                            now mutated into disgusting zombies with an insatiable appetite for humans. In this
+                            extensive,
+                            visceral RPG experience you’ll journey to iconic LA locations, taking on quests, meeting
+                            eccentric survivors and enjoying a joyously pulpy narrative along the way.
+
+                            The game’s brutal melee combat gives you access to an expansive array of inventive
+                            zombie-slaying weaponry that lets you slice, smash and tear through the hordes before they
+                            get
+                            the chance to do the same to you. Can you survive HELL-A?
+                        </div>
+                        <div class="quan">
+                            One quality
+                            <div class="tity">
+                                Quantity
+                                <input list="Quantity" value="1">
+                                <datalist id="Quantity">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </datalist>
+                            </div>
+                            <div class="edit">
+                                <div class="fav">
+                                    <input type="checkbox" id="love2">
+                                    <label for="love2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                        </svg>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="spp">
+                    <img src="" alt="product">
+                    <div class="infsp">
+                        <div class="nsp">
+                            <div class="n"></div>
+                            <div class="pp"></div>
+                        </div>
+                        <div class="infpro"></div>
+                        <div class="quan">
+                            One quality
+                            <div class="tity">
+                                Quantity
+                                <input list="Quantity" value="1">
+                                <datalist id="Quantity">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </datalist>
+                            </div>
+                            <div class="edit">
+                                <div class="fav">
+                                    <input type="checkbox" id="love3">
+                                    <label for="love3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                        </svg>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="proright">
+                <h3>Information</h3>
+                <div class="sub">
+                    Oder's
+                    <div class="pric">Laura Anker</div>
+                </div>
+                <div class="sub">
+                    Total
+                    <div class="pric">152.45 $</div>
+                </div>
+                <div class="sub">
+                    Location
+                    <div class="pric">32 Dang Thai Mai, Tay Ho, Ha Noi</div>
+                </div>
+                <div class="sub">
+                    Phone number
+                    <div class="pric">0994444994</div>
+                </div>
+                <div class="payment">
+                    <label class="pay1">Had pay</label>
+                </div>
+                <div class="payment">
+                    <label class="pay2">Take cash</label>
+                </div>
+                <hr>
+                <div class="sub">
+                    Oder's ID
+                    <div class="pric">#olala</div>
+                </div>
+                <div class="sub">
+                    Day created
+                    <div class="pric">26-4-2023</div>
+                </div>
+                <div class="sub">
+                    Employee's name
+                    <div class="pric">Duc</div>
+                </div>
+                <hr>
+                <div class="total">
+                    Status
+                    <div class="tal1">Processing</div>
+                </div>
+                <div class="total">
+                    Status
+                    <div class="tal2">Complete</div>
+                </div>
+                <div class="total">
+                    Status
+                    <div class="tal3">Canceled</div>
+                </div>
+                <hr>
+                <button type="submit">Cancel</button>
+            </div>
+        </div>
+    </form>
+    <!-- #include file="layouts/footer.asp" -->
+</body>
+
+</html>
