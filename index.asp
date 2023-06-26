@@ -25,7 +25,7 @@
 
     offset = (Clng(page) * Clng(limit)) - Clng(limit)
 
-    strSQL = "SELECT COUNT(productname) AS count FROM products"
+    strSQL = "SELECT COUNT(nameitem) AS count FROM Item"
     connDB.Open()
     Set CountResult = connDB.execute(strSQL)
 
@@ -188,7 +188,7 @@
         <div class="line"></div>
         <div class="sp">
         <%
-        sql = "select * from products"
+        sql = "select * from Item"
         Dim cmdPrep
         set cmdPrep = Server.CreateObject("ADODB.Command")
         'connDB.Open()
