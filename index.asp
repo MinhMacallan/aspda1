@@ -208,8 +208,8 @@
                     </div>
                     <div class="center">
                         <div class="inf">
-                        <h1><%=result("productname")%></h1>
-                            <%=result("describe")%>
+                        <h1><%=result("nameitem")%></h1>
+                            <%=result("introduction")%>
                         </div>
                         <div class="pri"><%=result("price")%> $</div>
                     </div>
