@@ -41,8 +41,18 @@
                 <label>Enter Password</label>
             </div>
             <div class="user-box">
-                <input type="password" name="password" required placeholder="Enter Password Again">
+                <input type="text" name="password" required placeholder="Enter Password Again">
                 <label>Enter Password Again</label>
+            <div class="user-box">
+                <input type="text" name="name" required placeholder="Phone Number">
+            <label>Enter Your Name</label>
+            <div class="user-box">
+                <input type="text" name="addr" required placeholder="Phone Number">
+            <label>Enter Your Address</label>
+                        <div class="user-box">
+                <input type="text" name="addr" required placeholder="Phone Number">
+            <label>Enter Your City</label>
+            </div>
             </div>
             <div class="button-form">
                 <button type="submit" for="form">Submit</button>

@@ -4,78 +4,69 @@ use sale
 
 -- SELECT * FROM Account
 -- select * from ITEM
-
+CREATE TABLE [Admin](
+    PhoneNumber VARCHAR(11) PRIMARY key,
+    Pass NVARCHAR(20) not null
+)
+GO
 CREATE TABLE Account(
-    ID INT not null,
-    phonenumber int PRIMARY key,
-    name NVARCHAR(30) not null,
-    pass NVARCHAR(20) not null,
-    addr NVARCHAR(50) not null,
-    rights bit DEFAULT 0
+    ID INT PRIMARY KEY IDENTITY (1,1),
+    PhoneNumber VARCHAR(11) UNIQUE NOT NULL ,
+    [Name] NVARCHAR(30) not null,
+    Pass NVARCHAR(20) not null,
+    Addr NVARCHAR(50) not null
 )
-
+GO
 CREATE TABLE Item (
-    nameitem varchar(30) PRIMARY key,
-    genre varchar(50),
-    introduction varchar(5000),
-    price FLOAT(2) NOT NULL,
-    amountleft int not null,
-    picm varchar(500) not null,
-    pict varchar(500) not null,
-    picb varchar(500) not null,
-    pic1 varchar(500),
-    pic2 varchar(500),
-    pic3 varchar(500),
-    pic4 varchar(500),
-    pic5 varchar(500)
+	ID INT PRIMARY KEY IDENTITY(1,1),
+    Nameitem varchar(30) NOT NULL,
+    Genre varchar(50) ,
+    Introduction varchar(5000),
+    Price REAL NOT NULL,
+    Amountleft int not null,
+    Picm varchar(500) not null,
+    Pict varchar(500) not null,
+    Picb varchar(500) not null,
+    Pic1 varchar(500),
+    Pic2 varchar(500),
+    Pic3 varchar(500),
+    Pic4 varchar(500),
+    Pic5 varchar(500)
 )
-
-CREATE TABLE Favourite(
-    phonecus int FOREIGN KEY REFERENCES Account(phonenumber),
-    namefav VARCHAR(30) FOREIGN KEY REFERENCES Item(nameitem)
-)
-
-create table Cart(
-    idcart varchar(10) PRIMARY KEY,
-    total int not null,
-    phonecus int FOREIGN KEY REFERENCES Account(phonenumber)
-)
-
-CREATE TABLE Detail(
-    nameitem varchar(30) FOREIGN key REFERENCES Item(nameitem),
-    amount int not null,
-    totalitem int not null,
-    idcart varchar(10) FOREIGN key REFERENCES Cart(idcart)
-)
-
+GO
 CREATE TABLE Pay (
-    idpay varchar(20) PRIMARY key,
-    idcart varchar(10) foreign key REFERENCES Cart(idcart),
-    datepay DATETIME not null,
-    mode varchar(20) not null,
-    phonecus int FOREIGN key REFERENCES Account(phonenumber),
-    delifee int not null,
-    totalpay int not null,
-    takenote NVARCHAR(200)
+    IDPay varchar(20) PRIMARY key,
+	IDCus INT FOREIGN key REFERENCES Account(ID),
+    Datepay DATETIME DEFAULT GETDATE() not null,
+	Addr NVARCHAR(50) NOT NULL,
+    Phone VARCHAR(11) NOT NULL,
+    Totalpay REAL not null,
+	[Status] tinyint default(0),
+    Takenote NVARCHAR(200)
 )
-
-CREATE TABLE Oder(
-    idoder varchar(20) FOREIGN key REFERENCES Pay(idpay),
-    status nvarchar(10) DEFAULT 'Unprocess',
-    phonecus int FOREIGN key REFERENCES Account(phonenumber),
-    Employee int FOREIGN key REFERENCES Account(phonenumber),
+GO
+CREATE TABLE DetailPay(
+    IDPay varchar(20) FOREIGN key REFERENCES Pay(idpay),
+    IDItem int FOREIGN key REFERENCES Item(ID),
+	Amount INT,
+	Price REAL,
 )
-
-
-INSERT INTO [dbo].[Account]
-([ID],[phonenumber],[name], [addr], [pass],[rights])
+GO
+INSERT INTO [dbo].[Admin]
+([PhoneNumber],[Pass])
 VALUES
-(1,0112233445,'Duc', 'HN', 1,1),
-(2,0221133554,'Minh', 'HN', 1,1),
-(3,0343434324,'Nhu', 'HN',1,1),
-(4,1001, 'Laura Anker','32 Dang Thai Mai, Tay Ho, Ha Noi', 1,0),
-(5,1002, 'Tim Cork','54 Hong Mai, Hai Ba Trung, Ha Noi', 1,0),
-(6,1003, 'Zoe johnal','142 Nguyen Trai, Quan 3, Ho Chi Minh', 1,0)
+('123','1')
+
+GO
+INSERT INTO [dbo].[Account]
+([phonenumber],[name], [addr], [pass])
+VALUES
+('0112233445','Duc', 'HN', '1'),
+('0221133554','Minh', 'HN', '1'),
+('0343434324','Nhu', 'HN','1'),
+('1001', 'Laura Anker','32 Dang Thai Mai, Tay Ho, Ha Noi', '1'),
+('1002', 'Tim Cork','54 Hong Mai, Hai Ba Trung, Ha Noi', '1'),
+('1003', 'Zoe johnal','142 Nguyen Trai, Quan 3, Ho Chi Minh', '1')
 GO
 
 INSERT INTO [dbo].[Item]
@@ -115,7 +106,7 @@ The game`s brutal melee combat gives you access to an expansive array of inventi
 'https://gmedia.playstation.com/is/image/SIEPDC/ratchet-and-clank-rift-apart-screenshot-01-ps5-en-15jun20?$1600px$'),
 
 
-('God of War™','1 player , ',
+('God of War','1 player , ',
 'From Santa Monica Studio comes the sequel to the critically acclaimed God of War (2018). Fimbulwinter is well underway. Kratos and Atreus must journey to each of the Nine Realms in search of answers as Asgardian forces prepare for a prophesied battle that will end the world. Along the way they will explore stunning, mythical landscapes, and face fearsome enemies in the form of Norse gods and monsters. The threat of Ragnarök grows ever closer. Kratos and Atreus must choose between their own safety and the safety of the realms',
 42.35,34,
 'https://gmedia.playstation.com/is/image/SIEPDC/god-of-war-ragnarok-listing-thumb-01-09sep21$en?$1200px$',
@@ -145,7 +136,7 @@ Journey back out into the wilds like never before in Horizon Call of the Mountai
 'https://gmedia.playstation.com/is/image/SIEPDC/horizon-forbidden-west-screenshot-18-en-02feb22?$1600px$'),
 
 
-('FIFA 23 EA SPORTS™ FIFA 23','Online play , ',
+('FIFA 23 EA SPORTS FIFA 23','Online play , ',
 'EA SPORTS™ FIFA 23 brings The World`s Game to the pitch, with both men’s and women’s FIFA World Cup™ tournaments, the addition of women’s club teams and new ways to play your favourite modes.
 
 Advances in HyperMotion2 Technology bring even more of the action and realism of football to the pitch on PS5. Driven by twice as much real-world motion capture, there is now more true football animation than ever before in every match.',
@@ -160,7 +151,7 @@ Advances in HyperMotion2 Technology bring even more of the action and realism of
 'https://gmedia.playstation.com/is/image/SIEPDC/fifa-23-world-cup-mexico-screen-04-ps4-ps5-en-11nov22?$1600px$'),
 
 
-('The Last of Us™ Part I ','Offline play , 1 player , ',
+('The Last of Us Part I ','Offline play , 1 player , ',
 'Experience the emotional storytelling and unforgettable characters in The Last of Us, winner of over 200 Game of the Year awards.
 
 In a ravaged civilisation, where infected and hardened survivors run rampant, Joel, a weary protagonist, is hired to smuggle 14-year-old Ellie out of a military quarantine zone. However, what starts as a small job soon transforms into a brutal cross-country journey.
@@ -192,7 +183,7 @@ Now alone and armed with only his engineering tools and skills, Isaac races to u
 'https://gmedia.playstation.com/is/image/SIEPDC/dead-space-launch-screenshot-01-en-18jan23?$1600px$'),
 
 
-('Gran Turismo® 7','Online play , 1 - 2 players',
+('Gran Turismo 7','Online play , 1 - 2 players',
 'Whether you`re a competitive or casual racer, collector, tuner, livery designer or photographer – find your line with a staggering collection of game modes including fan-favourites like GT Campaign, Arcade and Driving School.
 
 With the reintroduction of the legendary GT Simulation Mode, buy, tune and race your way through a rewarding solo campaign as you unlock new cars and challenges. And if you love going head-to-head with others, hone your skills and compete in the GT Sport Mode.
@@ -222,7 +213,7 @@ With over 420 cars available at Brand Central and the Used Car Dealership from d
 'https://gmedia.playstation.com/is/image/SIEPDC/spider-man-2-reveal-heroes-4K-legal_2022-en-12dec22?$1600px$'),
 
 
-('Assassin`s Creed® Mirage','Offline play , 1 player , ',
+('Assassin`s Creed Mirage','Offline play , 1 player , ',
 'Experience the home of the original Assassins in this exciting new narrative-driven, open world adventure.
 
 15 years since the first Assassin`s Creed redefined adventure, experience the franchises` trademark parkour and stealth like never before - in Assassin`s Creed Mirage. 
@@ -315,7 +306,7 @@ As James comes to terms with his own turmoil, he`ll be left with one question - 
     'https://gmedia.playstation.com/is/image/SIEPDC/silent-hill-2-screen-02-en-06oct22?$1600px$'),
 
 
-('STAR WARS Jedi: Survivor™','Offline play',
+('STAR WARS Jedi: Survivor','Offline play',
 'STAR WARS Jedi: Survivor™ picks up five years after the events of STAR WARS Jedi: Fallen Order™. Cal must stay one step ahead of the Empire’s constant pursuit as he continues to feel the weight of being one of the last remaining Jedi in the galaxy.
 
 Developed by the veteran team at Respawn Entertainment, Jedi: Survivor will expand upon iconic STAR WARS stories, worlds, and characters, and thrilling combat first experienced in Jedi: Fallen Order.
@@ -349,7 +340,7 @@ Every aspect of the classic game has been updated for the current generation, fr
     'https://gmedia.playstation.com/is/image/SIEPDC/resident-evil-4-remake-screen-10-ps5-en-01nov22?$1600px$'),
 
 
-('Firewall™ Ultra','Online play , ',
+('Firewall Ultra','Online play , ',
 'Enlist as an elite contractor and squad up for PVP and PVE multiplayer missions in this tactical first-person shooter, developed by First Contact Entertainment for PlayStation®VR2.',
 45.85,34,
     'https://gmedia.playstation.com/is/image/SIEPDC/firewall-ultra-packshot-desktop-01-en-05sep22?$1200px$',
