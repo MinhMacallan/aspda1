@@ -15,11 +15,6 @@ body {
     font-family: 'myFont', Arial, Helvetica, sans-serif;
 }
 
-body::-webkit-scrollbar {
-    width: 0 !important;
-    display: none;
-}
-
 .login-box {
     position: relative;
     top: 250px;

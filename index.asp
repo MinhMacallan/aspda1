@@ -65,15 +65,30 @@
         <link rel="icon" href="https://static.thenounproject.com/png/2050059-200.png">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <link rel="stylesheet" href="footer.css">
+        <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="header.css">
+        <link rel="stylesheet" href="css/header.css">
         <title>Home</title>
         <style>
         </style>
     </head>
     <body>
+    <%
+    if isnull(session("role")) then
+    %>
         <!-- #include file="layouts/header.asp" -->
+    <%
+        elseif  session("role") = 0 then
+        %>
+        <!-- #include file="layouts/headercus.asp" -->
+    <%
+        elseif (session("role")) = 1 then
+        %>
+        <!-- #include file="layouts/headerem.asp" -->
+        <%
+        end if
+    %>
+
         <div class="adv">
             <img class="m1"
                 src="https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-legacy-logo-01-17mar22$en?$1200px--t$"
@@ -179,8 +194,7 @@
             <div class="item">
                 <a href="Item.html">
                     <div class="picitem">
-                        <img src="https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-packshot-thumb-01-en-12jan21.jpg?$1200px$"
-                            alt="product">
+                        <img src="<%=result("Picm")%>"alt="product">
                     </div>
                     <div class="center">
                         <div class="inf">
@@ -190,17 +204,10 @@
                     </div>
                 </a>
                 <div class="addcart">
-                    <button type="submit" class="butadd">Add To Cart</button>                  
-                    <div class="fa">
-                        <input type="checkbox" id="love1">
-                        <label for="love1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                            </svg>
-                        </label>
-                    </div>
+                <form action=addCart.asp>
+                    <input type="hidden" name="IDProduct" value="<%=result("ID") %>">
+                    <button type="submit" name="butadd" class="butadd">Add To Cart</button>    
+                </form>              
                     <div class="pri"><%=result("price")%>$</div>
                 </div>
             </div>

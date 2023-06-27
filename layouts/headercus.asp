@@ -1,34 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="header.css">
-    <title>Header</title>
-</head>
-<body style="margin: 0;">
-    <nav class="linkk">
+  <nav class="linkk">
         <div>
-            <div class="barr">
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-arrow-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                    </svg>
-                </a>
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-arrow-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                    </svg>
-                </a>
-            </div>
-            <a href="homepage.html" class="home">
+            <div class="barr">                  
+            <a href="index.asp" class="home">
                 <ul>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-playstation" viewBox="0 0 16 16">
@@ -41,18 +14,21 @@
         </div>
         <div class="b">Enjoy Ur life B4 U Die ..</div>
         <div class="rightt">
+        <%if(isnull(Session("phoneacc")) or TRIM(Session("phoneacc"))="") then%>
             <div class="log">
-                <a href="login.html">Login</a>
-                <z>/</z>
-                <a href="signup.html">Sign Up</a>
-            </div>
-            <a class="cart" href="Product.html">
+                <a href="login.asp">Login</a>
+                <a>/</a>
+                <a href="signup.asp">Sign Up</a>
+            </div>  
+        <%end if%>
+            <a class="cart" href="Product.asp">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart"
                     viewBox="0 0 16 16">
                     <path
                         d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                 </svg>
             </a>
+        <%if( NOT isnull(Session("phoneacc")) and TRIM(Session("phoneacc"))<>"") then%>
             <div class="profile">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -65,11 +41,9 @@
                     <p><a href="pass.html">Update Password</a></p>
                     <p><a href="Listoder.html">My Oder</a></p>
                     <div class="nhr"></div>
-                    <p><a href="delete.asp">Log Out</a></p>
+                    <p><a href="logout.asp">Log Out</a></p>
                 </div>
             </div>
+        <%end if%>
         </div>
     </nav>
-</body>
-
-</html>

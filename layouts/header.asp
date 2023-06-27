@@ -39,7 +39,6 @@
                         d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                 </svg>
                 <div class="lik">
-                    <p><a href="favorites.html">Favorites</a></p>
                     <p><a href="pass.html">Update Password</a></p>
                     <p><a href="Listoder.html">My Oder</a></p>
                     <p><a href="allitem.html">All Item</a></p>
@@ -47,6 +46,6 @@
                     <p><a href="logout.asp">Log Out</a></p>
                 </div>
             </div>
-            <%end if%>
+        <%end if%>
         </div>
     </nav>

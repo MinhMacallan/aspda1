@@ -1,32 +1,32 @@
 <!--#include file="connect.asp"-->
 <%
     'Lay ve IDProduct
-    Dim idProduct
-    idProduct = Request.QueryString("idproduct") 'dat ten bien theo nut them gio hang
+    Dim IDProduct
+    IDProduct = Request.QueryString("IDProduct") 'dat ten bien theo nut them gio hang
     ' Do Something...
-    If (NOT IsNull(idProduct) and idProduct <> "") Then
+    If (NOT IsNull(IDProduct) and IDProduct <> "") Then
         Dim cmdPrep, Result
         Set cmdPrep = Server.CreateObject("ADODB.Command")
             connDB.Open()
             cmdPrep.ActiveConnection = connDB
             cmdPrep.CommandType = 1
-            cmdPrep.CommandText = "SELECT * FROM products WHERE id=?"
-            cmdPrep.Parameters(0)=idProduct
+            cmdPrep.CommandText = "SELECT * FROM Item WHERE ID=?"
+            cmdPrep.Parameters(0)=IDProduct
             Set Result = cmdPrep.execute 
 
             If not Result.EOF then
                 'ID exits
                 'check session exists
-                Dim currentCarts, arrays, cc, mycarts, List
+                Dim currentCarts, mycarts
                 If (NOT IsEmpty(Session("mycarts"))) Then
                     ' true
                     Set currentCarts = Session("mycarts")                                                    
-                    if currentCarts.Exists(idProduct) = true then
+                    if currentCarts.Exists(IDProduct) = true then
                         Dim value
-                        value = Clng(currentCarts.Item(idProduct))+1
-                        currentCarts.Item(idProduct) = value                        
+                        value = Clng(currentCarts.Item(IDProduct))+1
+                        currentCarts.Item(IDProduct) = value                        
                     else
-                        currentCarts.Add idProduct, 1
+                        currentCarts.Add IDProduct, 1
                     end if 
                     'saving new session value
                     Set Session("mycarts") = currentCarts                                  
@@ -34,7 +34,7 @@
                     Dim quantity
                     quantity = 1                    
                     Set mycarts = Server.CreateObject("Scripting.Dictionary")
-                    mycarts.Add idProduct, quantity
+                    mycarts.Add IDProduct, quantity
                     Set Session("mycarts") = mycarts
                     Set mycarts = Nothing
                     Response.Write("Session created!")
@@ -46,7 +46,7 @@
             Result.Close()
             connDB.Close()
 
-           Response.redirect("products.asp")            
+           Response.redirect("Product.asp")            
     End if
     'Dim mycarts
    'lay ve danh sach ID trong gio hang

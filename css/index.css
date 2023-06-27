@@ -4,10 +4,6 @@ body {
     z-index: 0;
 }
 
-body::-webkit-scrollbar {
-    width: 0 !important;
-    display: none;
-}
 
 a {
     text-decoration: none;
@@ -324,7 +320,9 @@ a {
     bottom: 0;
     align-content: center;
     align-items: center;
+    justify-content: space-around;
 }
+
 
 .butadd {
     position: relative;
