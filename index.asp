@@ -1,7 +1,7 @@
 <!-- #include file="connect.asp" -->
 <!DOCTYPE html>
 <html lang="en">
-<% limit=3
+<% limit=6
     function Ceil(Number)
     Ceil=Int(Number) 
     if Ceil<>Number Then
@@ -69,8 +69,9 @@
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="header.css">
         <title>Home</title>
+        <style>
+        </style>
     </head>
-
     <body>
         <!-- #include file="layouts/header.asp" -->
         <div class="adv">
@@ -95,13 +96,12 @@
             <div class="search">
                 <form action = "">
                 <input type="text" name="key" placeholder="search . . . " reuired>
-                <button> <label for="search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                <button class="but">
+                    <svg class="icos" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-search" viewBox="0 0 16 16">
                         <path
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg>
-                </label> 
+                    </svg> 
                 </button>          
                 </form>
             </div>
@@ -113,40 +113,55 @@
                 <ul class="fil">
                     <h3>Genre</h3>
                     <p>
-                    <a href = "?genre=action">Action</a>
+                        <a input type="checkbox" id= "genre1" href = "?genre=action">
+                            <label for="genre1"> Action </label>
+                        </a>
                     </p>
                     <p>
-                    <a href = "?genre=adventure">Adventure</a>
+                        <a input type="checkbox" id= "genre2" href = "?genre=adventure">
+                            <label for="genre1"> Adventure </label>
+                        </a>
                     </p>
                     <p>
-                    <a href = "?genre=shooter">Shooter</a>
+                        <a input type="checkbox" id= "genre3" href = "?genre=shooter">
+                            <label for="genre1"> Shooter </label>
+                        </a>
                     </p>
                     <p>
-                    <a href = "?genre=online">Online</a>
+                        <a input type="checkbox" id= "genre4" href = "?genre=online">
+                            <label for="genre1"> Online </label>
+                        </a>
                     </p>
                     <p>
-                    <a href = "?genre=offline">Offline</a>
+                        <a input type="checkbox" id= "genre5" href = "?genre=offline">
+                            <label for="genre1"> Offline </label>
+                        </a>
                     </p>
                 </ul>
                 &nbsp;
                 <ul class="fil">
                     <h3>Price</h3>
-                    <a href ="?start=0&end=25">
-                        <label for="price1">0 - 25 $</label>
-                    </a>
-                    <a href ="?start=25&end=50">
-                        <label for="price2">25 - 50 $</label>
-                    </a>
-                    <a href ="?start=50&end=75">
-                        <label for="price3">50 - 75 $</label>
-                    </a>
-                    <a href ="?start=75&end=100">
-                        <label for="price4">75 - 100 $</label>
-                    </a>
+                    <p>
+                        <a input type="radio" id="price1" href ="?start=0&end=25">
+                            <label for="price1">0 - 25 $</label>
+                        </a>
+                    </P>
+                    <p>
+                        <a input type="radio" id="price2" href ="?start=25&end=50">
+                            <label for="price2">25 - 50 $</label>
+                        </a>
+                    </p>
+                    <p>
+                        <a input type="radio" id="price3" href ="?start=50&end=75">
+                            <label for="price3">50 - 75 $</label>
+                        </a>
+                    </p>
+                    <p>
+                        <a input type="radio" id="price4" href ="?start=75&end=100">
+                            <label for="price4">75 - 100 $</label>
+                        </a>
+                    </p>
                 </ul>
-                <div class="vibe">
-
-                </div>
             </div>
             <div class="line"></div>
             <div class="sp">
@@ -169,10 +184,9 @@
                     </div>
                     <div class="center">
                         <div class="inf">
-                        <h1><%=result("nameitem")%></h1>
+                        <h3><%=result("nameitem")%></h3>
                             <%=result("introduction")%>
                         </div>
-                        <div class="pri"><%=result("price")%> $</div>
                     </div>
                 </a>
                 <div class="addcart">
@@ -187,13 +201,15 @@
                             </svg>
                         </label>
                     </div>
+                    <div class="pri"><%=result("price")%>$</div>
                 </div>
             </div>
             <%
             result.MoveNext()
             WEnd%>
         </div>
-    <div class="">
+    </div>
+    <div class="pagi">
             <nav aria-label="">
                 <ul class="pagination">
                 <% if (range>1) then
@@ -201,21 +217,22 @@
                 %>
 
                     <li class="page-item ">
-                        <a class="page-link" href="index.asp?page=<%=Clng(page)-1%>" >Previous</a>
+                        <a class="page-link" style="color:rgb(255, 178, 85)" href="index.asp?page=<%=Clng(page)-1%>"  >Previous</a>
                     </li>
                 <%    
                         end if 
                         for i= 1 to range
                 %>
                     <li class="page-item <%=checkPage(Clng(i)=Clng(page),"active")%>">
-                        <a class="page-link" href="index.asp?page=<%=i%>"><%=i%></a>
+                        <a class="page-link" style="color:rgb(255, 178, 85)" href="index.asp?page=<%=i%>"><%=i%></a>
                     </li>
                 <%
                         next
                         if (Clng(page)<range) then
 
                 %>
-                    <li class="page-item"><a class="page-link" href="index.asp?page=<%=Clng(page)+1%>" style="color:rgb(255, 178, 85)">Next</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="index.asp?page=<%=Clng(page)+1%>" style="color:rgb(255, 178, 85)">Next</a></li>
                 <%
                     end if    
                 end if
@@ -223,7 +240,6 @@
                 </ul>
             </nav>
         </div>
-    </div>
     <div class="adv">
         <img class="m1"
             src="https://gmedia.playstation.com/is/image/SIEPDC/dead-island-2-logo-01-en-18apr23?$1200px--t$"

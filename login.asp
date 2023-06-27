@@ -32,8 +32,8 @@
         cmdPrepad.Parameters(1)=password
         Dim resultad
         set resultad = cmdPrepad.execute()
-        If not result.EOF Then
-        Session("phoneacc")=result("PhoneNumber")
+        If not resultad.EOF Then
+        Session("phoneacc")=resultad("PhoneNumber")
         Session("SuccessLogin")="Login Successfully"
         Session("role")= 1
         Response.redirect("index.asp")
@@ -113,9 +113,8 @@ End if
                 </div>
             </div>
         </form>
-    </div>
-    <!-- #include file="layouts/footer.asp" -->
-    
-</body>
 
+    </div>
+</body>
+<!-- #include file="layouts/footer.asp" -->
 </html>
