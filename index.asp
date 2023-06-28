@@ -73,22 +73,7 @@
         </style>
     </head>
     <body>
-    <%
-    if isnull(session("role")) then
-    %>
-        <!-- #include file="layouts/header.asp" -->
-    <%
-        elseif  session("role") = 0 then
-        %>
-        <!-- #include file="layouts/headercus.asp" -->
-    <%
-        elseif (session("role")) = 1 then
-        %>
-        <!-- #include file="layouts/headerem.asp" -->
-        <%
-        end if
-    %>
-
+    <!-- #include file="layouts/header.asp" -->
         <div class="adv">
             <img class="m1"
                 src="https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-legacy-logo-01-17mar22$en?$1200px--t$"
