@@ -11,12 +11,12 @@ Dim cmdPrep, rs
         connDB.Open()
         cmdPrep.ActiveConnection = connDB
         cmdPrep.CommandType = 1
-        cmdPrep.CommandText = "DELETE FROM SanPham WHERE tensp = ?"
+        cmdPrep.CommandText = "DELETE FROM Item WHERE Nameitem = ?"
         cmdPrep.Parameters(0)=tensp
         Response.Write(cmdPrep.CommandText)
         Set rs = cmdPrep.execute()
     Session("Success") = "Delete successfully"
-    Response.Redirect("allitem.html")
+    Response.Redirect("allitem.asp")
     Response.End
 end if
 %>

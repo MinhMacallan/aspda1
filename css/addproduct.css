@@ -1,0 +1,123 @@
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .square {
+    width: 350px;
+    height: 170px;
+    background-color: beige;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        font-size: 42px;
+        font-weight: 600;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: rgb(255, 178, 85);
+        margin: 50px 0 50px 200px;
+    }
+
+    form {
+        width: 80%;
+        position: relative;
+        left: 10%;
+        border: 2px solid rgb(255, 178, 85);
+        border-radius: 30px;
+        margin: 0 0 50px 0;
+    }
+
+    .man {
+        display: flex;
+    }
+
+    .container {
+        width: 65%;
+        height: auto;
+        margin: 30px 20px 30px 50px;
+    }
+
+    .container input,
+    .anh input {
+        position: relative;
+        border: 1px solid rgb(255, 178, 85);
+        border-radius: 15px;
+        width: 90%;
+        height: 30px;
+        margin-bottom: 5px;
+        padding: 0 50px;
+    }
+
+    input::-webkit-input-placeholder {
+        color: rgb(255, 178, 85);
+        opacity: .6;
+    }
+
+    .container h3{
+        font-size: 18px;
+        width: 100%;
+        height: 30px;
+        margin: 0 0 5px 20px;
+        opacity: .7;
+    }
+
+    .anh h3 {
+        font-size: 18px;
+        width: 100%;
+        height: 30px;
+        margin: 0 0 0 20px;
+        opacity: .7;
+    }
+
+    .anh {
+        width: 35%;
+        margin: 30px 0;
+    }
+
+    .sen{
+        position: relative;
+        display: flex;
+        width: 100%;
+        gap: 20px;
+        justify-content: end;
+        padding: 0 220px;
+    }
+    .sen .save {
+        color: rgb(255, 178, 85);
+        font-size: 16px;
+        padding: 10px 26px;
+        background-color: transparent;
+        border: 2px solid rgb(255, 178, 85);
+        border-radius: 15px;
+        width: 250px;
+        height: 50px;
+        position: relative;
+        margin: 0 0 10px 0;
+    }
+
+    .sen .save:hover {
+        background: rgb(255, 178, 85);
+        color: #fff;
+        border-radius: 30px;
+    }
+
+    .sen a{
+        text-decoration: none;
+        width: 150px;
+        height: 50px;
+        color: red;
+        border: 2px solid red;
+        border-radius: 15px;
+        display: grid;
+        place-content: center;
+    }
+
+    .sen a:hover {
+        border-radius: 25px;
+        color: #fff;
+        background-color: red;
+    }

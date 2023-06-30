@@ -177,7 +177,8 @@
             While not result.EOF 
             %>
             <div class="item">
-                <a href="Item.html">
+            <form id="formItem<%=result("ID")%>" method="post" action="Item.asp">
+                <a href="javascript:" onclick="document.getElementById('formItem<%=result("ID")%>').submit()">
                     <div class="picitem">
                         <img src="<%=result("Picm")%>"alt="product">
                     </div>
@@ -188,9 +189,11 @@
                         </div>
                     </div>
                 </a>
+                <input type="hidden" name="id" value= <%=result("ID")%>>
+            </form>
                 <div class="addcart">
                 <form action=addCart.asp>
-                    <input type="hidden" name="IDProduct" value="<%=result("ID") %>">
+                    <input type="hidden" name="IDProduct" value="<%=result("ID")%>">
                     <button type="submit" name="butadd" class="butadd">Add To Cart</button>    
                 </form>              
                     <div class="pri"><%=result("price")%>$</div>

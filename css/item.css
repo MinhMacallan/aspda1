@@ -1,0 +1,274 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #18131e;
+}
+
+.item {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.tem {
+    position: absolute;
+    width: 60%;
+    height: auto;
+    color: #fff;
+    font-family: "Cormorant Garamond", serif;
+    margin: 0;
+    padding: 30px 0 0 50px;
+    z-index: 2;
+    font-size: 20px;
+    opacity: .8;
+}
+
+.dmm {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 500px;
+}
+
+.tem .nam1 {
+    font-size: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-bottom: 20px;
+}
+
+.tem .avai {
+    display: block;
+    margin: 0 0 20px 20px;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.tem .avai p {
+    display: flex;
+    gap: 20px;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.avai p svg,
+.ps svg,
+.ps p svg {
+    width: 25px;
+    height: 25px;
+}
+
+.ps {
+    display: flex;
+    margin: 0 0 20px 20px;
+    gap: 15px;
+}
+
+.ps p {
+    width: 25%;
+    margin: 0;
+}
+
+.pri1 {
+    font-size: 30px;
+    width: 80%;
+    text-align: center;
+    transform: translate(-40%, 0);
+}
+
+.pri2 {
+    position: relative;
+    justify-content: center;
+    width: 80%;
+    padding-top: 20px;
+}
+
+.pri2 button {
+    color: rgb(255, 178, 85);
+    position: relative;
+    background-color: rgba(255, 178, 85, 0.338);
+    border-radius: 25px;
+    margin: 3px 0;
+    text-align: center;
+    width: 40%;
+    left: 50%;
+    transform: translate(-120%, 0);
+    transition: all 0.2s;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 18px;
+    border:0px;
+}
+
+.pri2 button:hover {
+    color: #fff;
+    background-color: rgb(255, 178, 85);
+    border: rgb(255, 255, 255) solid 1px;
+}
+
+.pri2 button svg {
+    width: 25px;
+    height: 25px;
+    margin: 0 0 0 15px;
+}
+
+
+
+.infor {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.infor img {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    z-index: 1;
+}
+
+.mai {
+    position: absolute;
+    background-color: #00000050;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    color: antiquewhite;
+    opacity: .9;
+}
+
+.what {
+    width: 40%;
+    height: 100%;
+    padding: 30px 0 0 50px;
+    font-size: 35px;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.word {
+    width: 60%;
+    height: 100%;
+    padding: 30px 30px 0 0;
+    overflow: hidden;
+    white-space: pre-wrap;
+}
+
+
+/*  */
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    width: 80%;
+    height: 500px;
+    overflow: hidden;
+    padding: 0;
+    background-color: #000050;
+}
+
+.slider {
+    position: relative;
+    display: flex;
+    width: 500%;
+    height: 100%;
+    transition: all 0.25s ease-in;
+    transform: translateX(0);
+}
+
+.slider .box {
+    height: 100%;
+    width: 20%;
+    display: grid !important;
+    grid-template-columns: repeat(2, 0.4fr);
+    align-items: center;
+    position: relative;
+}
+
+.slider .box .details {
+    padding: 2rem 2rem 5rem 10rem;
+    z-index: 100;
+}
+
+.slider .box .details h1 {
+    font-size: 3.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #ffffff80;
+}
+
+.slider .box img {
+    width: 100%;
+    height: 500px;
+    position: absolute;
+}
+.prev,
+.next,
+.trail {
+    z-index: 100;
+    position: absolute;
+}
+
+.prev,
+.next {
+    width: 3%;
+    opacity: 0.2;
+    transition: all 0.3s ease;
+}
+
+.prev:hover,
+.next:hover {
+    opacity: 1;
+}
+
+.prev {
+    top: 50%;
+    left: 2%;
+    transform: translate( 0,-50%);
+}
+
+.next {
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
+}
+
+.trail {
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 650px) {
+    .trail {
+        width: 100%;
+        bottom: 3%;
+    }
+}
+
+.trail div {
+    border-top: 3px solid #fff;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.trail div:hover {
+    opacity: 0.6;
+}
+
+
+.active {
+    opacity: 1 !important;
+}

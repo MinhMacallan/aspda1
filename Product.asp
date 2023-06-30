@@ -15,9 +15,8 @@
 </head>
 
 <body>
-    
-
-    <form action="paying.html" id="pay">
+    <!-- #include file="layouts/header.asp" -->
+    <form action="paying.asp" id="pay">
         <div class="mainpro">
             <div class="proleft">
                 <h4> Cart </h4>
@@ -37,6 +36,7 @@
                             set result = cmdPrep.execute()
                             while not result.EOF
                     %>
+                    <input type="hidden" value="<%=item%>">
                     <div class="spp">
                     <img src="<%=result("Picm")%>"
                         alt="product">
@@ -50,7 +50,11 @@
                                 Quantity
                                 <input list="Quantity" value="<%=session("mycarts").item(item)%>">
                             </div>
+                            
+                            <button type="submit" >+</button>
+                            <button type="submit" >-</button>
                             <div>
+                            
                             Price per item: <%=result("Price")%>$
                             </div>
                             <div class="edit">
@@ -69,6 +73,7 @@
                             </div>
                         </div>
                     </div>
+                
                 </div>
                     <%
                             result.MoveNext
@@ -77,6 +82,12 @@
                             connDB.Close
                         next 
                     %>
+                    <hr>
+                    <button action="paying.asp" type="submit">Pay Now</button>
+        </div>
+    </form>
+    <form action="index.asp">
+        <button action="index.asp" type="submit">Update my cart</button>
+    </form>
 </body>
-
 </html>
