@@ -1,5 +1,9 @@
 <!-- #include file="connect.asp" -->
 <%
+if isnull(session("role")) then
+session("paying")=1
+response.redirect("login.asp")
+end if
 if not isnull(session("role")) then
 Dim name, phonenum, address, note
 If(Request.ServerVariables("REQUEST_METHOD")="POST")THEN

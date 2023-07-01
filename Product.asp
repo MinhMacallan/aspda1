@@ -22,7 +22,7 @@
                 <h4> Cart </h4>
                     <%
                         if isnull(session("mycarts")) or isempty(session("mycarts")) then
-                        response.write("Your cart is empty")
+                        response.write("Your cart is empty")                       
                         else
                         for each item in session("mycarts").keys
                             Dim sql
@@ -37,7 +37,7 @@
                             cmdPrep.Parameters(0)=item
                             Dim result
                             set result = cmdPrep.execute()
-                            while not result.EOF                        
+                            while not result.EOF                       
                     %>
                     <input type="hidden" value="<%=item%>">
                     <div class="spp">
@@ -82,11 +82,13 @@
                             WEnd
                             result.Close
                             connDB.Close
-                        next
+                        next%>
+                        <button type="submit">Pay Now</button>
+                        <%                      
                         end if 
                     %>
                     <hr>
-                    <button action="paying.asp" type="submit">Pay Now</button>
+
         </div>
     </form>
 </body>

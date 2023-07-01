@@ -44,7 +44,11 @@
         Session("SuccessLogin")="Login Successfully"
         Session("role")= 0
         session("id")=result("ID")
-        Response.redirect("index.asp")        
+        if not isnull(session("paying")) and session("paying")=1 then
+            response.redirect("paying.asp")
+        else
+        Response.redirect("index.asp")
+        end if        
     End if
     result.Close()
     connDB.Close()
