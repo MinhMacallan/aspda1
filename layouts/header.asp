@@ -42,7 +42,7 @@
                 </svg>
                 <div class="lik">
                     <p><a href="pass.asp">Update Password</a></p>
-                    <p><a href="Listoder.html">My Oder</a></p>
+                    <p><a href="Listorder.html">My Oder</a></p>
                     <div class="nhr"></div>
                     <p><a href="logout.asp">Log Out</a></p>
                 </div>

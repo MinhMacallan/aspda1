@@ -1,5 +1,4 @@
 <!--#include file="connect.asp"-->
-
 <%
     Dim IDProduct
     IDProduct = Request.QueryString("IDProduct") 'dat ten bien theo nut them gio hang
@@ -19,11 +18,12 @@
                     Set currentCarts = Session("mycarts")                                                    
                     if currentCarts.Exists(IDProduct) = true then
                         Dim value
-                        value = Clng(currentCarts.Item(IDProduct))+1
-                        currentCarts.Item(IDProduct) = value                        
-                    else
-                    currentCarts.Add IDProduct, 1
-                    end if 
+                        value = Clng(currentCarts.Item(IDProduct))-1
+                        currentCarts.Item(IDProduct) = value
+                    End if
+                    if value = 0 then
+                        response.redirect("deleteCart.asp?IDProduct=" & IDProduct)
+                    end if                        
                     Set Session("mycarts") = currentCarts                                  
                 Else
                     Dim quantity

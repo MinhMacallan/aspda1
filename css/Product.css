@@ -102,6 +102,7 @@ a {
 
 .fav,
 .trash {
+    display: block;
     position: relative;
     display: flex;
 }

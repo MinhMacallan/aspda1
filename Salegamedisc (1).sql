@@ -35,7 +35,7 @@ CREATE TABLE Item (
 )
 GO
 CREATE TABLE Pay (
-    IDPay varchar(20) PRIMARY key,
+    IDPay varchar(20) PRIMARY key IDENTITY(1,1),
 	IDCus INT FOREIGN key REFERENCES Account(ID),
     Datepay DATETIME DEFAULT GETDATE() not null,
 	Addr NVARCHAR(50) NOT NULL,

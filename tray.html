@@ -1,100 +1,19 @@
-
-<div class="container">
-    <div class="slider">
-        <div class="box">
-            <div class="details">
-                <h1>Ready for your route</h1>
-            </div>
-            <img
-                src="https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-legacy-screen-01-ps5-en-02oct20?$1600px$">
-        </div>
-        <div class="box">
-            <div class="details">
-                <h1>Do it by your own way</h1>
-            </div>
-            <img
-                src="https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-legacy-screen-03-ps5-en-02oct20?$1600px$">
-        </div>
-        <div class="box">
-            <div class="details">
-                <h1>Nothing can stop you</h1>
-            </div>
-            <img
-                src="https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-legacy-screen-04-ps5-en-02oct20?$1600px$">
-        </div>
-        <div class="box">
-            <div class="details">
-                <h1>A Interseting Experience</h1>
-            </div>
-            <img
-                src="https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-legacy-screen-05-ps5-en-02oct20?$1600px$">
-        </div>
-        <div class="box">
-            <div class="details">
-                <h1>Focus the goals</h1>
-            </div>
-            <img
-                src="https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-legacy-screenshot-hogsmeade-shop-01-en-13sep22?$1600px$">
-        </div>
-    </div>
-
-
-    <div class="container">
-        <div class="slider">
-            <div class="box">
-                <img
-                    src="<%=result("Pic1")%>">
-            </div>
-            <div class="box">
-                <img
-                    src="<%=result("Pic2")%>">
-            </div>
-            <div class="box">
-                <img
-                    src="<%=result("Pic3")%>">
-            </div>
-            <div class="box">
-                <img
-                    src="<%=result("Pic4")%>">
-            </div>
-            <div class="box">
-                <img
-                    src="<%=result("Pic5")%>">
-            </div>
-        </div>
-
-        .slider {
-            position: relative;
-            display: flex;
-            width: 500%;
-            height: 100%;
-            transition: all 0.25s ease-in;
-            transform: translateX(0);
-        }
-
-        .slider .box {
-            height: 100%;
-            width: 20%;
-            display: grid !important;
-            grid-template-columns: repeat(2, 0.4fr);
-            align-items: center;
-            position: relative;
-        }
-
-        .slider .box .details {
-            padding: 2rem 2rem 5rem 10rem;
-            z-index: 100;
-        }
-
-        .slider .box .details h1 {
-            font-size: 3.5rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: #ffffff80;
-        }
-
-        .slider .box img {
-            width: 100%;
-            height: 500px;
-            position: absolute;
-        }
+<%
+    for each item in session("mycarts").keys
+        Dim sql
+        sql = "select * from Item where ID= ?"
+        Dim cmdPrep
+        set cmdPrep = Server.CreateObject("ADODB.Command")
+        connDB.Open()
+        cmdPrep.ActiveConnection = connDB
+        cmdPrep.CommandType=1
+        cmdPrep.Prepared=true
+        cmdPrep.CommandText = sql
+        cmdPrep.Parameters(0)=item
+        Dim result
+        set result = cmdPrep.execute()
+        while not result.EOF
+ %>
+<img src="<%=result("Picm")%>"
+<div class="n"> <%=result("Nameitem")%> </div>
+<div class="pp"><%=result("Price") * session("mycarts").item(item)%> $</div>
