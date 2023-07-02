@@ -1,0 +1,149 @@
+.list {
+    position: relative;
+    width: 80%;
+    height: auto;
+    left: 10%;
+    height: auto;
+    border: 1px solid rgb(255, 178, 85);
+    border-radius: 30px;
+    margin: 100px 0;
+    padding: 40px 30px;
+}
+
+.fun{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.fun svg{
+    width: 50px;
+    height: 50px;
+    color: rgb(255, 178, 85);
+}
+
+
+.list .fun h4 {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(255, 178, 85);
+}
+
+.bar {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    background-color: rgba(1, 0, 1, 0.336);
+    align-items: center;
+    border-radius: 25px;
+    gap: 15px;
+    margin: 20px 10px;
+    padding: 0 30px;
+}
+
+.bar label {
+    color: rgb(255, 178, 85);
+    width: 150px;
+    border: 1px solid rgb(255, 178, 85);
+    background-color: #fff;
+    border-radius: 15px;
+    transition: all 0.2s;
+    padding: 4px 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.bar label:hover {
+    border: 1px solid rgb(255, 178, 85);
+    border-radius: 30px;
+}
+
+.bar input[type="radio"]:checked+label {
+    background-color: rgb(255, 178, 85);
+    color: #fff;
+    transition: all 0.2s;
+    opacity: .9;
+}
+
+.bar input[type="radio"] {
+    display: absolute;
+    position: absolute;
+    opacity: 0;
+}
+
+.sub {
+    position: relative;
+    display: flex;
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    justify-content: space-between;
+}
+
+.total {
+    position: relative;
+    display: flex;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+    justify-content: space-between;
+}
+
+.pric {
+    position: relative;
+    font: inherit;
+}
+
+.infoder {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 280px);
+    width: 80%;
+}
+
+.oder {
+    position: relative;
+    display: grid;
+    width: 250px;
+    height: 450px;
+    border-radius: 15px;
+    border: 1px solid rgb(255, 178, 85);
+    margin-bottom: 15px;
+}
+
+.im {
+    width: 250px;
+    height: 250px;
+    border-radius: 15px 15px 0 0;
+}
+
+.oder-info {
+    padding: 10px;
+}
+
+.tal1 {
+    background-color: rgb(74, 74, 74);
+    border-radius: 15px;
+    width: 120px;
+    text-align: center;
+    color: #fff;
+}
+
+.tal2 {
+    background-color: rgb(255, 178, 85);
+    border-radius: 15px;
+    width: 120px;
+    text-align: center;
+    color: #fff;
+}
+
+.tal3 {
+    background-color: rgb(255, 85, 85);
+    border-radius: 15px;
+    width: 120px;
+    text-align: center;
+    color: #fff;
+}

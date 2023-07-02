@@ -1,0 +1,147 @@
+.list {
+    position: relative;
+    width: 80%;
+    height: auto;
+    left: 10%;
+    height: auto;
+    border: 1px solid rgb(255, 178, 85);
+    border-radius: 30px;
+    margin: 100px 0;
+    padding: 40px 30px;
+}
+
+.fun{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.fun svg{
+    width: 50px;
+    height: 50px;
+    color: rgb(255, 178, 85);
+}
+
+
+.list .fun h4 {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(255, 178, 85);
+}
+
+.bar {
+    width: 98%;
+    height: 40px;
+    display: flex;
+    background-color: rgba(1, 0, 1, 0.336);
+    align-items: center;
+    border-radius: 25px;
+    gap: 15px;
+    margin: 20px 10px;
+    padding: 0 30px;
+}
+
+.bar label {
+    color: rgb(255, 178, 85);
+    width: 150px;
+    border: 1px solid rgb(255, 178, 85);
+    background-color: #fff;
+    border-radius: 15px;
+    transition: all 0.2s;
+    padding: 4px 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.bar label:hover {
+    border: 1px solid rgb(255, 178, 85);
+    border-radius: 30px;
+}
+
+.bar input[type="radio"]:checked+label {
+    background-color: rgb(255, 178, 85);
+    color: #fff;
+    transition: all 0.2s;
+    opacity: .9;
+}
+
+.bar input[type="radio"] {
+    display: absolute;
+    position: absolute;
+    opacity: 0;
+}
+
+.sub {
+    position: relative;
+    display: flex;
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    justify-content: space-between;
+}
+
+.total {
+    position: relative;
+    display: flex;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+    justify-content: space-between;
+}
+
+.pric {
+    position: relative;
+    font: inherit;
+}
+
+.infoder {
+    position: relative;
+    display: flex;
+    justify-items: center;
+    width: 90%;
+}
+
+.tab{
+    border-radius: 25px;
+    position: relative;
+    left: 5%;
+    width: 100%;
+    height: auto;
+}
+.tab tr{
+    width: 100%;
+}
+.tab tr th{
+    width: 200px;
+    text-align: center;
+    color: rgb(255, 178, 85);
+}
+.tab tr td{
+    overflow: hidden;
+    text-align: center;
+}
+.tab tr td div{
+    display: flex;
+}
+.butt {
+    text-decoration: none;
+    padding: 5px 20px;
+    color: rgb(255, 178, 85);
+    border: 1px solid rgb(255, 178, 85);
+    border-radius: 25px;
+}
+.bu{
+    width: 45%;
+    background: transparent;
+    color: rgb(255, 178, 85);
+    border: 1px solid rgb(255, 178, 85);
+    border-radius: 25px;
+}
+.bu:hover, .butt:hover{
+    background-color: rgb(255, 178, 85);
+    color: #fff;
+    border: 1px solid transparent;
+}

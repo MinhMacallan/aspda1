@@ -1,39 +1,93 @@
 <!-- #include file="connect.asp" -->
 <%
 if isnull(session("role")) then
-session("paying")=1
-response.redirect("login.asp")
+    session("paying")=1
+    response.redirect("login.asp")
 end if
-if not isnull(session("role")) then
-Dim name, phonenum, address, note
-If(Request.ServerVariables("REQUEST_METHOD")="POST")THEN
-    name = Request.form("name")
-    phonenum = Request.form("phonenum")
-    address = Request.form("addr")
-    note =Request.form("note")
-    atotal =Request.form("total")
 
-    If (NOT isnull(name) AND NOT isnull(phonenum)AND NOT isnull(address)) THEN
-        Set cmdPrep = Server.CreateObject("ADODB.Command")
+if not isnull(session("role")) then
+    Dim name, phonenum, address, note
+        If(Request.ServerVariables("REQUEST_METHOD")="POST")THEN
+            name = Request.form("name")
+            phonenum = Request.form("phonenum")
+            address = Request.form("addr")
+            note =Request.form("note")
+            atotal =Request.form("total")
+
+            If (NOT isnull(name) AND NOT isnull(phonenum)AND NOT isnull(address)) THEN
+                Set cmdPrep = Server.CreateObject("ADODB.Command")
+                connDB.Open()
+                    Dim cmdPrepp1 
+                    Set cmdPrepp1 = Server.CreateObject("ADODB.Command")
+                    cmdPrepp1.ActiveConnection = connDB
+                    cmdPrepp1.CommandType=1
+                    cmdPrepp1.Prepared=true
+                    cmdPrepp1.CommandText = "Insert into Pay(IDCus,Name,Addr,Phone,Totalpay,Takenote) output inserted.IDPay values (?,?,?,?,?,?)"
+                    cmdPrepp1.Parameters(0)= session("id")
+                    cmdPrepp1.parameters(1)= name
+                    cmdPrepp1.parameters(2)= address
+                    cmdPrepp1.parameters(3)= phonenum
+                    cmdPrepp1.parameters(4)= atotal
+                    cmdPrepp1.parameters(5)= note
+                    Set resultt = cmdPrepp1.execute()                   
+                    Dim IDPay
+                    IDPay = resultt.fields("IDPay").value
+                    Dim carts, idProduct, quantity, pirce
+                    If (NOT IsEmpty(Session("mycarts"))) Then
+                        Set carts= Session("mycarts")
+                        Dim dpis, cmddpis
+                        dpis = "INSERT INTO DetailPay (IDPay, IDItem, Amount, Price) VALUES (?, ?, ?, ?);"
+
+                        Set cmddpis = Server.CreateObject("ADODB.Command")
+                        cmddpis.ActiveConnection = connDB
+                        cmddpis.CommandText = dpis
+                        cmddpis.CommandType = 1
+
+                        For Each idProduct In carts.Keys
+                            quantity = carts.Item(idProduct)
+                            Dim cmdPrepp2
+                            Set cmdPrepp2 = Server.CreateObject("ADODB.Command")
+                            cmdPrepp2.ActiveConnection = connDB
+                            cmdPrepp2.CommandType=1
+                            cmdPrepp2.Prepared=true
+                            cmdPrepp2.CommandText = "SELECT Price from Item Where ID=?"
+                            cmdPrepp2.Parameters(0)= idProduct
+                            Set resulttt = cmdPrepp2.execute()
+                            price = resulttt("Price")
+                            cmddpis.Parameters.Append(cmddpis.CreateParameter("@IDPay", 3, 1, , IDPay))
+                            cmddpis.Parameters.Append(cmddpis.CreateParameter("@IDItem", 3, 1, , idProduct))
+                            cmddpis.Parameters.Append(cmddpis.CreateParameter("@Amount", 3, 1, , quantity))
+                            cmddpis.Parameters.Append(cmddpis.CreateParameter("@Price", 5, 1, , price))
+                            cmddpis.Execute()
+                            Do While cmddpis.Parameters.Count > 0
+                            cmddpis.Parameters.Delete(0)
+                            Loop
+                        Next
+                        response.redirect("listorder.asp")
+                        Set Session("mycarts") = Server.CreateObject("Scripting.Dictionary")
+                    End if
+                    connDB.Close()
+            else Session("ErrorPaying")="Please fill out the requirements"
+
+            End If
+        End If
+If(Request.ServerVariables("REQUEST_METHOD")="GET")THEN
         connDB.Open()
-            Dim cmdPrepp1 
-            Set cmdPrepp1 = Server.CreateObject("ADODB.Command")
-            cmdPrepp1.ActiveConnection = connDB
-            cmdPrepp1.CommandType=1
-            cmdPrepp1.Prepared=true
-            cmdPrepp1.CommandText = "Insert into Pay(IDCus,Name,Addr,Phone,Totalpay,Takenote) values (?,?,?,?,?,?)"
-            cmdPrepp1.Parameters(0)= session("id")
-            cmdPrepp1.parameters(1)= name
-            cmdPrepp1.parameters(2)= address
-            cmdPrepp1.parameters(3)= phonenum
-            cmdPrepp1.parameters(4)= atotal
-            cmdPrepp1.parameters(5)= note
-            Set resultt = cmdPrepp1.execute()
-            response.redirect("Listorder.html")
-            connDB.Close()
-    else Session("ErrorPaying")="Please fill out the requirements"
-    End If
-End If
+            Dim cmdPrepp3 ,name2, phonenum2, address2
+            Set cmdPrepp3 = Server.CreateObject("ADODB.Command")
+            cmdPrepp3.ActiveConnection = connDB
+            cmdPrepp3.CommandType=1
+            cmdPrepp3.Prepared=true
+            cmdPrepp3.CommandText = "Select * From Account where PhoneNumber=?"  
+            cmdPrepp3.parameters(0) = Session("phoneacc")
+            set result = cmdPrepp3.execute() 
+            If not result.EOF then
+            name2= result("Name")
+            phonenum2 = result("PhoneNumber")
+            address2 = result("Addr")     
+            End If
+        connDB.Close() 
+END IF
 else response.redirect("login.asp")
 End if
 %>
@@ -59,10 +113,10 @@ End if
                 <div class="del">
                     <div class="namede">Delivery Information</div>
                     <div class="namecus">
-                        <input type="text" name="name" placeholder="Name">
-                        <input type="number" name="phonenum" placeholder="Phone Number *">
+                        <input type="text" name="name" value = "<%= name2%>" placeholder="Name">
+                        <input type="number" name="phonenum" value = "<%= phonenum2%>" placeholder="Phone Number *">
                     </div>
-                    <input type="text" name="addr" class="addr" placeholder="Address *">
+                    <input type="text" name="addr" class="addr" value = "<%= address2%>" placeholder="Address *">
                     <input type="text" name="note" class="city" placeholder="Your note ">
                     <br>
                     <div class="warn">* Must be filled</div>

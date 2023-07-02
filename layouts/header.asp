@@ -42,7 +42,7 @@
                 </svg>
                 <div class="lik">
                     <p><a href="pass.asp">Update Password</a></p>
-                    <p><a href="Listorder.html">My Oder</a></p>
+                    <p><a href="listorder.asp">My Oder</a></p>
                     <div class="nhr"></div>
                     <p><a href="logout.asp">Log Out</a></p>
                 </div>
@@ -56,7 +56,8 @@
                     <div class="lik">
                         <p><a href="pass.asp">Update Password</a></p>
                         <p><a href="allitem.asp">All Item</a></p>
-                        <p><a href="listcus.html">List Account</a></p>
+                        <p><a href="listcus.asp">List Account</a></p>
+                        <p><a href="custorder.asp">Customers order</a></p>
                         <div class="nhr"></div>
                         <p><a href="logout.asp">Log Out</a></p>
                     </div>

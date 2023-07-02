@@ -23,9 +23,8 @@ If(Request.ServerVariables("REQUEST_METHOD")="POST")THEN
         cmdPrep.ActiveConnection = connDB      
         cmdPrep.CommandType = 1
         cmdPrep.Prepared = True
-        cmdPrep.CommandText ="SELECT * FROM Item WHERE Nameitem=? AND Genre = ?"
-        cmdPrep.parameters(0) = Nameitem
-        cmdPrep.parameters(1) = Genre
+        cmdPrep.CommandText ="SELECT * FROM Item WHERE ID =?"
+        cmdPrep.parameters(0) = id
 
         Dim Result 
         Dim resultt

@@ -21,7 +21,7 @@
             <div class="proleft">
                 <h4> Cart </h4>
                     <%
-                        if isnull(session("mycarts")) or isempty(session("mycarts")) then
+                        if isnull(session("mycarts")) or isempty(session("mycarts")) or session("mycarts").count =0 then
                         response.write("Your cart is empty")                       
                         else
                         for each item in session("mycarts").keys

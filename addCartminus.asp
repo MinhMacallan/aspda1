@@ -36,7 +36,6 @@
                 End if
                 Session("Success") = "The Product has bean added to your cart."
             Else
-                Session("Error") = "The Product is not exists, please try again."
             End If
             Result.Close()
             connDB.Close()
