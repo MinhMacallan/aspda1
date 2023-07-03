@@ -195,19 +195,19 @@
     While Not Result.EOF
     %>
             <div class="item">
-            <form id="formItem<%=result("ID")%>" method="post" action="Item.asp">
-                <a href="javascript:" onclick="document.getElementById('formItem<%=result("ID")%>').submit()">
-                    <div class="picitem">
-                        <img src="<%=result("Picm")%>"alt="product">
-                    </div>
-                    <div class="center">
-                        <div class="inf">
-                        <h4><%=result("nameitem")%></h4>
+                <form id="formItem<%=result("ID")%>" method="post" action="Item.asp">
+                    <a href="javascript:" onclick="document.getElementById('formItem<%=result("ID")%>').submit()">
+                        <div class="picitem">
+                            <img src="<%=result("Picm")%>"alt="product">
                         </div>
-                    </div>
-                </a>
-                <input type="hidden" name="id" value= <%=result("ID")%>>
-            </form>
+                        <div class="center">
+                            <div class="inf">
+                            <h4><%=result("nameitem")%></h4>
+                            </div>
+                        </div>
+                    </a>
+                    <input type="hidden" name="id" value= <%=result("ID")%>>
+                </form>
                 <div class="addcart">
                 <form method ="get" action ="edit.asp">
                     <button type="submit" class="buted">
@@ -215,11 +215,6 @@
                        
                     </button>
                 </form>  
-                <form method = "get" action ="delete.asp">
-                    <button type="submit" class="butde">Delete
-                        <a href='delete.asp?nameitem=<%= Session("Delete")%>'></a>
-                    </button>
-                </form>    
                 </div>
             </div>
         <%

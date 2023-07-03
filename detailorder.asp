@@ -111,7 +111,7 @@
                     <div class="pric"><%=result2("Datepay")%></div>
                 </div>
                 <hr>
-                <% if Cint(result2("Status")) = 0 then %>
+                <% if Cint(result2("Status")) = 0  then %>
                     <div class="total">
                         Status
                         <div class="tal1">Processing</div>
@@ -130,11 +130,17 @@
                 <% end if
                    End if  %>
                 <hr>
-                <a href="listorder.asp">
-                <button type="submit">Back</button>
-                </a>
-                <br>
                 <% if Session("role")= 1 then %>
+                <a href="Custorder.asp">
+                <button>Back</button>
+                </a>
+                <% else %>
+                <a href="Listorder.asp">
+                <button>Back</button>
+                </a>
+                <% end if %>
+                <br>
+                <% if Session("role")= 1 and result2("Status") = 0 then %>
                 <a href="status.asp?Status=1&ID=<%=result2("IDPay")%>">
                     <button type="submit">Set order complete</button>
                 </a>

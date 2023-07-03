@@ -113,6 +113,5 @@
             %>
         </form>
     </div>
-    <!-- #include file="layouts/footer.asp" -->
 </body>
 </html>

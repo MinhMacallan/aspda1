@@ -71,28 +71,12 @@ End if
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/login.css">
     <title> Login page</title>
-    <style>
-
-    </style>
 </head>
 
 <body>
 <!-- #include file="layouts/header.asp" -->
-    <div class="page">
-        <div class="center">
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-        </div>
-    </div>
     <p>&nbsp;</p>
+
     <div class="login-box">
         <form id="from" action="login.asp" method="post">
             <h2>Login Weed</h2>
@@ -120,6 +104,5 @@ End if
         </form>
 
     </div>
-    <!-- #include file="layouts/footer.asp" -->
 </body>
 </html>

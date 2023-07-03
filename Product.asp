@@ -21,9 +21,7 @@
             <div class="proleft">
                 <h4> Cart </h4>
                     <%
-                        if session("mycarts").count =0 or isnull(session("mycarts")) or isempty(session("mycarts")) then
-                        response.write("Your cart is empty")                       
-                        else
+                        if not isnull(session("mycarts")) and not isempty(session("mycarts")) then
                         for each item in session("mycarts").keys
                             Dim sql
                             sql = "select * from Item where ID= ?"
@@ -82,9 +80,11 @@
                             WEnd
                             result.Close
                             connDB.Close
-                        next%>
-                        <button type="submit">Pay Now</button>
-                        <%                      
+                        next %>
+                        <button type="submit" name="butpay" >Pay Now</button>
+                        <%          
+                        else
+                             response.write("Your cart is empty")                                  
                         end if 
                     %>
                     <hr>
