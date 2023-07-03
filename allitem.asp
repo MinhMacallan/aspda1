@@ -96,6 +96,7 @@
 
     &nbsp;
     <%
+        sql="select * from Item " & string
         Dim nameitem,genre,introduction,price,amountleft,picm,pic1,pic2,pic3,pic4,pic5,pict,picb
         Dim cmdPrep
 
@@ -103,7 +104,7 @@
             cmdPrep.ActiveConnection = connDB      
             cmdPrep.CommandType = 1
             cmdPrep.Prepared = True
-            cmdPrep.CommandText ="SELECT * FROM Item"
+            cmdPrep.CommandText =sql
             Dim Result, rs
             Set Result = cmdPrep.execute()
     %>
@@ -208,15 +209,17 @@
                 <input type="hidden" name="id" value= <%=result("ID")%>>
             </form>
                 <div class="addcart">
-                <form action="edit.asp" method="POST">
-                    <input type="hidden" name="IDProduct" value="<%=result("ID")%>">
-                    <button type="submit" class="buted">Edit</button>
-                </form>
-                <a href="delete.asp">
-                    <input type="hidden" name="IDProduct" value="<%=result("ID")%>">
-                    <button type="submit" class="butde">Delete</button>   
-                </a>              
-                    <div class="pri"><%=result("price")%>$</div>
+                <form method ="get" action ="edit.asp">
+                    <button type="submit" class="buted">
+                        <a href='./edit.asp?nameitem=<%= Result("nameitem")%>'>Edit</a>
+                       
+                    </button>
+                </form>  
+                <form method = "get" action ="delete.asp">
+                    <button type="submit" class="butde">Delete
+                        <a href='delete.asp?nameitem=<%= Session("Delete")%>'></a>
+                    </button>
+                </form>    
                 </div>
             </div>
         <%

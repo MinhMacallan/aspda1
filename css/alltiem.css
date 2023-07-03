@@ -57,7 +57,6 @@
 
 .search input {
     position: relative;
-    top: 50%;
     left: 170px;
     text-transform: translate(-50%, -50%);
     color: rgb(255, 178, 85);
@@ -250,7 +249,9 @@
     color: rgb(12, 13, 13);
     opacity: .6;
 }
-
+.icos{
+    color: rgb(255, 178, 85);
+}
 .inf {
     width: 150px;
     height: 40px;
@@ -292,7 +293,12 @@
     gap: 10px;
     top: 5px;
 }
-
+.but {
+    margin-left: 170px;
+    font-size: 20px;
+    border: 0px;
+    background: white;
+}
 .buted,
 .butde {
     position: relative;
