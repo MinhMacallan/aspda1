@@ -79,7 +79,7 @@ If(Request.ServerVariables("REQUEST_METHOD")="GET")THEN
             cmdPrepp3.CommandType=1
             cmdPrepp3.Prepared=true
             cmdPrepp3.CommandText = "Select * From Account where PhoneNumber=?"  
-            cmdPrepp3.parameters(0) = Session("phoneacc")
+            cmdPrepp3.parameters(0) = Cint(Session("phoneacc"))
             set result = cmdPrepp3.execute() 
             If not result.EOF then
             name2= result("Name")

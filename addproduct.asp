@@ -24,7 +24,7 @@ If(Request.ServerVariables("REQUEST_METHOD")="POST")THEN
         cmdPrep.CommandType = 1
         cmdPrep.Prepared = True
         cmdPrep.CommandText ="SELECT * FROM Item WHERE ID =?"
-        cmdPrep.parameters(0) = id
+        cmdPrep.parameters(0) = Cint(id)
 
         Dim Result 
         Dim resultt
@@ -50,7 +50,6 @@ If(Request.ServerVariables("REQUEST_METHOD")="POST")THEN
             cmdPrepp1.parameters(10)= anh5
             cmdPrepp1.parameters(11)= anht
             cmdPrepp1.parameters(12)= anhb
-			Response.Write(cmdPrepp1.CommandText)
             Set resultt = cmdPrepp1.execute()
         Else
             Session("Error") = "The item is already exist"
@@ -148,7 +147,7 @@ End If
         </div>
         <div class="sen">
             <button type="submit" name="save" class="save">Add Product</button>
-            <a href="allitem.html">Cancel</a>
+            <a href="allitem.asp">Back</a>
         </div>
     </form>
     

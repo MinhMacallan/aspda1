@@ -70,10 +70,25 @@
                         <div class="pric"><%=result("Totalpay")%>$</div>
                     </div>
                     <hr>
+                    <% if Cint(result("Status")) = 0 then %>
                     <div class="total">
                         Status
                         <div class="tal1">Processing</div>
                     </div>
+                    <% else if Cint(result("Status")) = 1 then %>
+                        <div class="total">
+                            Status
+                            <div class="tal2">Complete</div>
+                        </div>
+                        <% else %>
+                            <div class="total">
+                                Status
+                                <div class="tal3">Canceled</div>
+                            </div>
+                        <%
+                            end if
+                            end if
+                        %>   
                 </div>
             </div>
             <%

@@ -81,3 +81,72 @@
             </a>
     </div>
 </div>
+
+
+
+
+<%
+                        if session("mycarts").count =0 or isnull(session("mycarts")) or isempty(session("mycarts")) then
+                        response.write("Your cart is empty")                       
+                        else
+                        for each item in session("mycarts").keys
+                            Dim sql
+                            sql = "select * from Item where ID= ?"
+                            Dim cmdPrep
+                            set cmdPrep = Server.CreateObject("ADODB.Command")
+                            connDB.Open()
+                            cmdPrep.ActiveConnection = connDB
+                            cmdPrep.CommandType=1
+                            cmdPrep.Prepared=true
+                            cmdPrep.CommandText = sql
+                            cmdPrep.Parameters(0)=item
+                            Dim result
+                            set result = cmdPrep.execute()
+                            while not result.EOF                       
+                    %>
+
+
+                    <%
+                    id = Request.QueryString("ID")
+                    
+                    if trim(id)= "" or isnull(id) then
+                    Response.Write("<script>alert('Cannot delete');document.location='allitem.asp'</script>")
+                    Response.End
+                    else
+                    Dim cmdPrep, rs
+                            Set cmdPrep = Server.CreateObject("ADODB.Command")
+                            connDB.Open()
+                            cmdPrep.ActiveConnection = connDB
+                            cmdPrep.CommandType = 1
+                            cmdPrep.CommandText = "DELETE FROM Account WHERE ID = ?" & request.QueryString("ID")
+                            cmdPrep.Parameters(0)=id
+                            Response.Write(cmdPrep.CommandText)
+                            Set rs = cmdPrep.execute()
+                        Session("Success") = "Delete successfully"
+                        Response.Redirect("listcus.asp")
+                        Response.End
+                    end if
+                    %>
+
+
+                    set conn = server.createobject("adodb.connection")
+set Cmd = Server.CreateObject("ADODB.Command")
+'-------------------------------------------------------
+connDB.open (db_connection)
+'-------------------------------------------------------
+set rs = Server.CreateObject("ADODB.RecordSet")
+%>
+    <% 
+        Dim Id
+        Id =request.QueryString("ID")
+        if(Id>0) then
+        Dim sSQL
+        sSQL="Exec accountdelete " & request.QueryString("ID")& ""
+     
+        conn.execute(sSQL)
+        response.Redirect("listcus.asp")
+        end if
+
+
+
+        session("mycarts").count =0 or

@@ -1,47 +1,36 @@
 <!--#include file ="connect.asp"-->
-<%
+<% 
 dim nameitem,genre,introduction,price,amountleft,picm,pict,picb,pic1,pic2,pic3,pic4,pic5
 dim result
-            If (Request.ServerVariables("Request_Method") = "POST") Then
-            nameitem = Request.form("nameitem")
-            genre = Request.form("genre")
-            introduction = Request.form("introduction")
-            price =Request.form("price")
-            amountleft=Request.form("amountleft")
-            picm = Request.form("picm")
-            pic1 = Request.form("pic1")
-            pic2 = Request.form("pic2")
-            pic3 = Request.form("pic3")
-            pic4 = Request.form("pic4")
-            pic5 = Request.form("pic5")
-            pict = Request.form("pict")
-            picb = Request.form("picb") 
-            Set cmdPrepp1 = Server.CreateObject("ADODB.Command")
-            connDB.Open()
-            cmdPrepp1.ActiveConnection = connDB      
-            cmdPrepp1.CommandType = 1
-            cmdPrepp1.Prepared = True
-            cmdPrepp1.CommandText ="UPDATE Item Set Genre = ?, Introduction=?, price=?, Amountleft=?, picm=?,pic1 =?,pic2 =?,pic3=?,pic4=?,pic5=?,pict=?,picb=? WHERE Nameitem = ? "
-            cmdPrepp1.Parameters(0)= genre
-            cmdPrepp1.Parameters(1)= introduction
-            cmdPrepp1.Parameters(2)= price
-            cmdPrepp1.Parameters(3)= CInt(amountleft)
-            cmdPrepp1.Parameters(4)= picm
-            cmdPrepp1.Parameters(5)= pic1
-            cmdPrepp1.Parameters(6)= pic2
-            cmdPrepp1.Parameters(7)= pic3
-            cmdPrepp1.Parameters(8)= pic4
-            cmdPrepp1.Parameters(9)= pic5
-            cmdPrepp1.Parameters(10)= pict
-            cmdPrepp1.Parameters(11)= picb
-            cmdPrepp1.Parameters(12)= nameitem
-            dim resultt
-            Set resultt = cmdPrepp1.execute()
-            session("Sucess") = " Update successful!"
-            Response.Redirect("edit.asp?nameitem="&nameitem)
-            
-    End If
+nameitem = Request.Form("IDProduct")
+response.write(nameitem)
+    If (not isnull(nameitem) or not trim(nameitem)="") then
+        Set cmdPrep = Server.CreateObject("ADODB.Command")
+        connDB.Open()
+        cmdPrep.ActiveConnection = connDB      
+        cmdPrep.CommandType = 1
+        cmdPrep.Prepared = True
+        cmdPrep.CommandText ="SELECT * FROM Item WHERE Nameitem=?"
+        cmdPrep.parameters(0) = nameitem
+        set result = cmdPrep.execute() 
+        If not result.EOF then
+            nameitem = result("nameitem")
+            genre = result("genre")
+            introduction = result("introduction")
+            price = result("price")
+            amountleft = result("amountleft")
+            picm = result("picm")
+            pic1 = result("pic1")
+            pic2 = result("pic2")
+            pic3 = result("pic3")
+            pic4 = result("pic4")
+            pic5 = result("pic5")
+            pict = result("pict")
+            picb = result("picb")      
+        End If
+End If
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,25 +42,127 @@ dim result
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="company.css">
     <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            font-size: 42px;
+            font-weight: 600;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: rgb(255, 178, 85);
+            margin: 50px 0 50px 200px;
+        }
+
+        form {
+            width: 80%;
+            position: relative;
+            left: 10%;
+            border: 2px solid rgb(255, 178, 85);
+            border-radius: 30px;
+            margin: 0 0 50px 0;
+        }
+
+        .man {
+            display: flex;
+        }
+
+        .container {
+            width: 65%;
+            height: auto;
+            margin: 30px 20px 30px 50px;
+        }
+
+        .container input,
+        .anh input {
+            position: relative;
+            border: 1px solid rgb(255, 178, 85);
+            border-radius: 15px;
+            width: 90%;
+            height: 30px;
+            margin-bottom: 5px;
+            padding: 0 50px;
+        }
+
+        input::-webkit-input-placeholder {
+            color: rgb(255, 178, 85);
+            opacity: .6;
+        }
+
+        .container h3{
+            font-size: 18px;
+            width: 100%;
+            height: 30px;
+            margin: 0 0 5px 20px;
+            opacity: .7;
+        }
+
+        .anh h3 {
+            font-size: 18px;
+            width: 100%;
+            height: 30px;
+            margin: 0 0 0 20px;
+            opacity: .7;
+        }
+
+        .anh {
+            width: 35%;
+            margin: 30px 0;
+        }
+
+        .sen{
+            position: relative;
+            display: flex;
+            width: 100%;
+            gap: 20px;
+            justify-content: end;
+            padding: 0 220px;
+        }
+        .sen .save {
+            color: rgb(255, 178, 85);
+            font-size: 16px;
+            padding: 10px 26px;
+            background-color: transparent;
+            border: 2px solid rgb(255, 178, 85);
+            border-radius: 15px;
+            width: 250px;
+            height: 50px;
+            position: relative;
+            margin: 0 0 10px 0;
+        }
+
+        .sen .save:hover {
+            background: rgb(255, 178, 85);
+            color: #fff;
+            border-radius: 30px;
+        }
+
+        .sen a{
+            text-decoration: none;
+            width: 150px;
+            height: 50px;
+            color: red;
+            border: 2px solid red;
+            border-radius: 15px;
+            display: grid;
+            place-content: center;
+        }
+
+        .sen a:hover {
+            border-radius: 25px;
+            color: #fff;
+            background-color: red;
+        }
+    </style>
 </head>
+
 <body>
   </div>
 </div>
-<% 
-        If Not IsEmpty(session("Sucess")) Then %>
-            <div id = "alert" class="alert alert-danger d-flex align-items-center" role="alert">
-             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-  <div class="error">
-     <% = session("Sucess") %> 
-  </div>
-</div>
-    <% 
-        End If
-        session.Contents.Remove("Sucess")
-    %>
     <h2> Edit Product </h2>
-    <form method="POST" action="edit.asp">
+    <form method="POST" action="edit2.asp">
         <div class="man">
             <div class="container">
                 <div class="row1">
@@ -131,7 +222,7 @@ dim result
             </div>
         </div>
          <div class="sen">
-            <button type="submit" name="save" class="save">Submit
+            <button type="submit" class="save">Submit
             </button>
             </div>
     </form>

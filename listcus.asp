@@ -68,7 +68,7 @@ DIM cmd
                     <tr>
                         <td><%=rs("ID")%></td>
                         <td><%=rs("PhoneNumber")%></td>
-                        <td><%=rs("Pass")%></td>
+                        <td><%=rs("Name")%></td>
                         <td><%=rs("Addr")%></td>
                         <td>
                             <a href="deletecus.asp?key=<%=rs("ID")%>">

@@ -1,8 +1,7 @@
-<!--#include file ="connect.asp"-->
+<!--#include file="connect.asp"-->
 <!DOCTYPE html>
 <html lang="en">
-<%
-    limit=10
+<% limit=10
     function Ceil(Number)
     Ceil=Int(Number) 
     if Ceil<>Number Then
@@ -45,7 +44,7 @@
     end if
     if stringkey <> "" then
             stringkey = " where " & stringkey
-    end if
+        end if
     string = stringkey & string
     strSQL = "SELECT COUNT(nameitem) AS count FROM Item"
     connDB.Open()
@@ -57,28 +56,7 @@
     else range = 0
     'Set CountResult = Nothing'
     end if
-
-    If(Request.ServerVariables("REQUEST_METHOD")="POST")THEN
-        nameitem = Request.QueryString("nameitem")
-        genre = Request.QueryString("type")
-        introduction = Request.QueryString("introduce")
-        price =Request.QueryString("price")
-        amountleft=Request.QueryString("howmany")
-        picm = Request.QueryString("picture")
-        pic1 = Request.QueryString("image1")
-        pic2 = Request.QueryString("image2")
-        pic3 = Request.QueryString("image3")
-        pic4 = Request.QueryString("image4")
-        pic5 = Request.QueryString("image5")
-        pict = Request.QueryString("imaget")
-        picb = Request.QueryString("imageb") 
-        
-        Dim resultt 
-        Set resultt = cmdPrep.excute()
-        session("nameitem") = nameitem
-    End if
 %>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,24 +71,12 @@
 </head>
 <!--#include file="layouts/header.asp"-->
 <body>
-
+    
     &nbsp;
-    <%
-        Dim nameitem,genre,introduction,price,amountleft,picm,pic1,pic2,pic3,pic4,pic5,pict,picb
-        Dim cmdPrep
-
-            Set cmdPrep = Server.CreateObject("ADODB.Command")
-            cmdPrep.ActiveConnection = connDB      
-            cmdPrep.CommandType = 1
-            cmdPrep.Prepared = True
-            cmdPrep.CommandText ="SELECT * FROM Item"
-            Dim Result, rs
-            Set Result = cmdPrep.execute()
-    %>
     <div class="con">
         <button class="tit" type="button">Genre Filter</button>
-        <div class="search">
-            <form action = "">
+            <div class="search">
+                <form action = "">
                 <input type="text" name="key" placeholder="search . . . " reuired>
                 <button class="but">
                     <svg class="icos" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -120,11 +86,28 @@
                     </svg> 
                 </button>          
                 </form>
-        </div>
+            </div>
         <div class="ani">
             <a class="ani" href="addproduct.asp">
                 <label>Add New Item</label>
             </a>
+        </div>
+        <div class="trap">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" style="color:rgb(255, 178, 85); " href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" style="color:rgb(255, 178, 85); " href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" style="color:rgb(255, 178, 85); " href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" style="color:rgb(255, 178, 85); " href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" style="color:rgb(255, 178, 85); " href="#">Next</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
     &nbsp;
@@ -158,6 +141,7 @@
                     </a>
                 </p>
             </ul>
+            &nbsp;
             <ul class="fil">
                 <h3>Price</h3>
                 <p>
@@ -181,18 +165,20 @@
                     </a>
                 </p>
             </ul>
-            <div class="vibe">
-
-            </div>
         </div>
         <div class="line"></div>
         <div class="sp">
-
-
-    <%
-    
-    While Not Result.EOF
-    %>
+            <% sql="select * from Item " & string 
+            Dim cmdPrep 
+            set cmdPrep=Server.CreateObject("ADODB.Command") 'connDB.Open()
+            cmdPrep.ActiveConnection = connDB
+            cmdPrep.CommandType=1
+            cmdPrep.Prepared=true
+            cmdPrep.CommandText = sql
+            Dim result
+            set result = cmdPrep.execute()
+            While not result.EOF 
+            %>
             <div class="item">
             <form id="formItem<%=result("ID")%>" method="post" action="Item.asp">
                 <a href="javascript:" onclick="document.getElementById('formItem<%=result("ID")%>').submit()">
@@ -201,7 +187,8 @@
                     </div>
                     <div class="center">
                         <div class="inf">
-                        <h4><%=result("nameitem")%></h4>
+                        <h3><%=result("nameitem")%></h3>
+                            <%=result("introduction")%>
                         </div>
                     </div>
                 </a>
@@ -219,10 +206,9 @@
                     <div class="pri"><%=result("price")%>$</div>
                 </div>
             </div>
-        <%
-        Result.MoveNext()
-        Wend
-    %>
+            <%
+            result.MoveNext()
+            WEnd%>
         </div>
     </div>
     <div class="pagi">

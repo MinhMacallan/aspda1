@@ -2,8 +2,7 @@
 <% 
 dim nameitem,genre,introduction,price,amountleft,picm,pict,picb,pic1,pic2,pic3,pic4,pic5
 dim result
-nameitem = Request.Form("IDProduct")
-response.write(nameitem)
+nameitem = Request.QueryString("nameitem")
     If (not isnull(nameitem) or not trim(nameitem)="") then
         Set cmdPrep = Server.CreateObject("ADODB.Command")
         connDB.Open()
@@ -224,6 +223,7 @@ End If
          <div class="sen">
             <button type="submit" class="save">Submit
             </button>
+             <a href ='./edit2.asp?nameitem=<%=Result("nameitem")%>'></a>
             </div>
     </form>
            

@@ -45,7 +45,7 @@
         Session("role")= 0
         session("id")=result("ID")
         if not isnull(session("paying")) and session("paying")=1 then
-            response.redirect("paying.asp")
+            response.redirect("Product.asp")
         else
         Response.redirect("index.asp")
         end if        

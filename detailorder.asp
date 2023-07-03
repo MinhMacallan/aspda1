@@ -47,7 +47,6 @@
                             set result1 = cmdPrep1.execute()
                             while not result1.EOF                       
                     %>
-                    <input type="hidden" value="<%=item%>">
                     <div class="spp">
                     <img src="<%=result1("Picm")%>" alt="product">
                     <div class="infsp">
@@ -134,6 +133,16 @@
                 <a href="listorder.asp">
                 <button type="submit">Back</button>
                 </a>
+                <br>
+                <% if Session("role")= 1 then %>
+                <a href="status.asp?Status=1&ID=<%=result2("IDPay")%>">
+                    <button type="submit">Set order complete</button>
+                </a>
+                <br>
+                <a href="status.asp?Status=2&ID=<%=result2("IDPay")%>">
+                    <button type="submit">Cancel order</button>
+                </a>
+                <% end if%>
             </div>
             <%
                 result2.MoveNext()
