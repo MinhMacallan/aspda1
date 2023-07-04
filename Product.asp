@@ -21,7 +21,7 @@
             <div class="proleft">
                 <h4> Cart </h4>
                     <%
-                        if not isnull(session("mycarts")) and not isempty(session("mycarts")) then
+                        if (not isnull(session("mycarts")) AND not isempty(session("mycarts")) AND Session("mycarts").Count >=1 ) then
                         for each item in session("mycarts").keys
                             Dim sql
                             sql = "select * from Item where ID= ?"
@@ -49,14 +49,14 @@
                         <div class="quan">
                             <div class="tity">
                                 Quantity
+                                <a href="addCartminus.asp?IDProduct=<%=item%>">
+                                <button type="button" >-</button>
+                                </a>
                                 <input list="Quantity" value="<%=session("mycarts").item(item)%>">
+                                <a href="addCart.asp?IDProduct=<%=item%>">    
+                                <button type="button" >+</button>
+                                </a>
                             </div>
-                            <a href="addCart.asp?IDProduct=<%=item%>">    
-                            <button type="button" >+</button>
-                            </a>
-                            <a href="addCartminus.asp?IDProduct=<%=item%>">
-                            <button type="button" >-</button>
-                            </a>
                             <div>
                             Price per item: <%=result("Price")%>$
                             </div>                              
@@ -80,8 +80,9 @@
                             WEnd
                             result.Close
                             connDB.Close
-                        next %>
-                        <button type="submit" name="butpay" >Pay Now</button>
+                        next 
+                    %>
+                        <button class="abcd" type="submit" name="butpay" >Pay Now</button>
                         <%          
                         else
                              response.write("Your cart is empty")                                  

@@ -199,11 +199,12 @@ body {
     justify-items: center;
 }
 
-.forward label {
+.subb {
     color: rgb(255, 178, 85);
     position: relative;
     background-color: rgb(252, 247, 237);
     border-radius: 25px;
+    border: 0px transparent;
     margin: 3px 0;
     text-align: center;
     width: 50%;
@@ -215,13 +216,13 @@ body {
     font-size: 18px;
 }
 
-.forward label:hover {
+.subb:hover {
     border: 1px solid rgb(255, 178, 85);
     background-color: rgb(252, 247, 237);
 }
 
-.forward>input[type="submit"] {
+/* .forward>input[type="submit"] {
     display: absolute;
     position: absolute;
     opacity: 0;
-}
+} */

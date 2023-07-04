@@ -48,6 +48,21 @@
         0 0 20px rgb(255, 178, 85);
 }
 
+.but{
+    background: transparent;
+    color: rgb(255, 178, 85);
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 10px 20px 10px 20px;
+    border: 1px solid rgb(255, 178, 85);
+    border-radius: 15px;
+    transform: translate(0);
+    height: 40px;
+    left: 40%;
+    top: 20%;
+    position: relative;
+}
 
 .search {
     width: 500px;
@@ -57,6 +72,7 @@
 
 .search input {
     position: relative;
+    top: 50%;
     left: 170px;
     text-transform: translate(-50%, -50%);
     color: rgb(255, 178, 85);
@@ -138,6 +154,10 @@
 .fil p {
     display: inline;
     margin: 0;
+}
+
+.fil p a{
+    text-decoration: none;
 }
 
 .fil p label {
@@ -249,9 +269,7 @@
     color: rgb(12, 13, 13);
     opacity: .6;
 }
-.icos{
-    color: rgb(255, 178, 85);
-}
+
 .inf {
     width: 150px;
     height: 40px;
@@ -293,22 +311,18 @@
     gap: 10px;
     top: 5px;
 }
-.but {
-    margin-left: 170px;
-    font-size: 20px;
-    border: 0px;
-    background: white;
-}
+
 .buted,
 .butde {
     position: relative;
-    width: 90%;
+    width: 300%;
     height: 25px;
     background-color: rgb(255, 178, 85);
     color: rgb(255, 255, 255);
     font-size: 14px;
     border: 0 solid;
     border-radius: 15px;
+    transform: translate(-50%,0);
 }
 
 .buted:hover,
@@ -328,4 +342,14 @@
 .pagi {
     display: flex;
     justify-content: center;
+}
+
+.bu {
+    position: relative;
+    width: 100%;
+    height: 25px;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+
 }

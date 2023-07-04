@@ -111,8 +111,9 @@
     <div class="con">
         <button class="tit" type="button">Genre Filter</button>
         <div class="search">
-            <form action = "">
+            <form action = "" class="search">
                 <input type="text" name="key" placeholder="search . . . " reuired>
+                &nbsp;
                 <button class="but">
                     <svg class="icos" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-search" viewBox="0 0 16 16">
@@ -120,7 +121,7 @@
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                     </svg> 
                 </button>          
-                </form>
+            </form>
         </div>
         <div class="ani">
             <a class="ani" href="addproduct.asp">
@@ -134,27 +135,27 @@
             <ul class="fil">
                 <h3>Genre</h3>
                 <p>
-                    <a input type="checkbox" id= "genre1" href = "?genre=action">
+                    <a input type="checkbox" style="text-decoration: none;" id= "genre1" href = "?genre=action">
                         <label for="genre1"> Action </label>
                     </a>
                 </p>
                 <p>
-                    <a input type="checkbox" id= "genre2" href = "?genre=adventure">
+                    <a input type="checkbox" style="text-decoration: none;" id= "genre2" href = "?genre=adventure">
                         <label for="genre1"> Adventure </label>
                     </a>
                 </p>
                 <p>
-                    <a input type="checkbox" id= "genre3" href = "?genre=shooter">
+                    <a input type="checkbox" style="text-decoration: none;" id= "genre3" href = "?genre=shooter">
                         <label for="genre1"> Shooter </label>
                     </a>
                 </p>
                 <p>
-                    <a input type="checkbox" id= "genre4" href = "?genre=online">
+                    <a input type="checkbox" style="text-decoration: none;" id= "genre4" href = "?genre=online">
                         <label for="genre1"> Online </label>
                     </a>
                 </p>
                 <p>
-                    <a input type="checkbox" id= "genre5" href = "?genre=offline">
+                    <a input type="checkbox" style="text-decoration: none;" id= "genre5" href = "?genre=offline">
                         <label for="genre1"> Offline </label>
                     </a>
                 </p>
@@ -162,22 +163,22 @@
             <ul class="fil">
                 <h3>Price</h3>
                 <p>
-                    <a input type="radio" id="price1" href ="?start=0&end=25">
+                    <a input type="radio" style="text-decoration: none;" id="price1" href ="?start=0&end=25">
                         <label for="price1">0 - 25 $</label>
                     </a>
                 </P>
                 <p>
-                    <a input type="radio" id="price2" href ="?start=25&end=50">
+                    <a input type="radio" style="text-decoration: none;" id="price2" href ="?start=25&end=50">
                         <label for="price2">25 - 50 $</label>
                     </a>
                 </p>
                 <p>
-                    <a input type="radio" id="price3" href ="?start=50&end=75">
+                    <a input type="radio" style="text-decoration: none;" id="price3" href ="?start=50&end=75">
                         <label for="price3">50 - 75 $</label>
                     </a>
                 </p>
                 <p>
-                    <a input type="radio" id="price4" href ="?start=75&end=100">
+                    <a input type="radio" style="text-decoration: none;" id="price4" href ="?start=75&end=100">
                         <label for="price4">75 - 100 $</label>
                     </a>
                 </p>
@@ -211,7 +212,7 @@
                 <div class="addcart">
                 <form method ="get" action ="edit.asp">
                     <button type="submit" class="buted">
-                        <a href='./edit.asp?nameitem=<%= Result("nameitem")%>'>Edit</a>
+                        <a class="bu"  href='./edit.asp?nameitem=<%= Result("nameitem")%>'>Edit</a>
                        
                     </button>
                 </form>  

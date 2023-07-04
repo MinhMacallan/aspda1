@@ -70,11 +70,6 @@ DIM cmd
                         <td><%=rs("PhoneNumber")%></td>
                         <td><%=rs("Name")%></td>
                         <td><%=rs("Addr")%></td>
-                        <td>
-                            <a href="deletecus.asp?key=<%=rs("ID")%>">
-                            <button class="bu" type="button" >Delete</button>
-                            </a>
-                        </td>
                 <% rs.MoveNext()
                 WEND
                 rs.Close()

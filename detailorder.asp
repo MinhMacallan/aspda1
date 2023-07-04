@@ -101,6 +101,10 @@
                     Phone number
                     <div class="pric"><%=result2("Phone")%></div>
                 </div>
+                <div class="sub">
+                    Note
+                    <div class="pric"><%=result2("Takenote")%></div>
+                </div>
                 <hr>
                 <div class="sub">
                     Oder's ID
